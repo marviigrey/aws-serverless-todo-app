@@ -1,0 +1,22 @@
+# GetTasks Lambda Function
+GetTasksFunction:
+  Type: AWS::Serverless::Function
+  Properties:
+    CodeUri: src/handlers/getTasks
+    Handler: app.handler
+    Runtime: nodejs14.x
+    Policies:
+      - DynamoDBCrudPolicy:
+          TableName: !Ref TasksTable
+    Environment:
+      Variables:
+        TASKS_TABLE: !Ref TasksTable
+    Events:
+      GetTasksFunctionApi:
+        Type: Api
+        Properties:
+          RestApiId: !Ref TasksApi
+          Path: /tasks
+          Method: GET
+          Auth:
+            Authorizer: MyLambdaTokenAuthorizer
