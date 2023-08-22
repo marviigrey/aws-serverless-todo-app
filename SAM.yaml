@@ -8,6 +8,8 @@ GetTasksFunction:
     Policies:
       - DynamoDBCrudPolicy:
           TableName: !Ref TasksTable
+    
+     
     Environment:
       Variables:
         TASKS_TABLE: !Ref TasksTable
@@ -20,3 +22,19 @@ GetTasksFunction:
           Method: GET
           Auth:
             Authorizer: MyLambdaTokenAuthorizer
+    Resources: 
+      TasksTable:
+          Type: AWS::DynamoDB::Table
+          Properties:
+            AttributeDefinitions:
+              -  AttributeName: "user"
+                 AttributeType: "S"
+              -  AttributeName: "id"
+                 AttributeType: "S"
+            KeySchema:
+              - AttributeName: "user"
+                KeyType: "HASH"
+              - AttributeName: "id"
+                KeyType: "RANGE"
+            BillingMode: PAY_PER_REQUEST
+              
