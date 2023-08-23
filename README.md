@@ -34,7 +34,18 @@ Steps
       
 This will redirect you to log in to your AWS console, you're to create an IAM user and attach the AdministratorAccess-Amplify permission to the user to enable you to work with the AWS Amplify service, you will also be asked for an access key of your IAM user you recently created so ensure you create an access key in your console and fill it in the cloud9 terminal where you will be working.
 After setting this up you will be ready to use AWS Amplify.
-We will be creating a todo application where users create tasks they want to complete, each time a new task is created, A lambda function will be invoked and the newly created task will be recorded on DynamoDB. the function will also handle the response by updating the frontend UI with the newly created task. The function responds to the front-end of our application through the API gateway. This solution will be known as our backend solution and will be created using a serverless architecture model. The serverless architecture model (SAM) is an open-source framework provided by Amazon Web Services (AWS) that simplifies the process of building serverless applications. It extends AWS CloudFormation to provide a simplified way to define the Amazon API Gateway APIs, AWS Lambda functions, and Amazon DynamoDB tables needed by your serverless application. Since the SAM works with CloudFormation, we will be creating a template that will be used to build the resources of our application.
+We will be creating a todo application where users create tasks they want to complete, each time a new task is created, A lambda function will be invoked and the newly created task will be recorded on DynamoDB. the function will also handle the response by updating the frontend UI with the newly created task. The function responds to the front-end of our application through the API gateway. This solution will be known as our backend solution and will be created using a serverless architecture model. The serverless architecture model (SAM) is an open-source framework provided by Amazon Web Services (AWS) that simplifies the process of building serverless applications. It extends AWS CloudFormation to provide a simplified way to define the Amazon API Gateway APIs, AWS Lambda functions, and Amazon DynamoDB tables needed by your serverless application. Since the SAM works with CloudFormation, we will be creating a template that will be used to build the resources of our application. Most configuration are 
+in our SAM directory (github.com/aws-samples/serverless-tasks-webapp), we just have to write the code into them. 
+
+Step2:
+i. We create our template which is in this current directory as SAM.yaml.
+ii. we defined the DynamoDB and its properties in the template, this will create the needed services to help us run our application.
+iii. create a lambda function with the nodejs runtime, and input the code into the /src/handlers/createTask/app.js file in our SAM directory. The code can also be found in this directory. 
+iv. After writing our function code, we add the function into our template. It's already in the SAM.yaml template file in this directory. 
+
+Step3: 
+Configure our lambda authorizer which is a feature provided by Amazon API Gateway, which allows you to use AWS Lambda functions to control access to your API resources. 
+
 
 
 
