@@ -44,7 +44,10 @@ iii. create a lambda function with the nodejs runtime, and input the code into t
 iv. After writing our function code, we add the function into our template. It's already in the SAM.yaml template file in this directory. 
 
 Step3: 
-Configure our lambda authorizer which is a feature provided by Amazon API Gateway, which allows you to use AWS Lambda functions to control access to your API resources. 
+Configure our lambda authorizer which is a feature provided by Amazon API Gateway, which allows you to use AWS Lambda functions to control access to your API resources.The link to the lambda auth is https://github.com/marviigrey/aws-serverless-todo-app/blob/main/lambda-authorizer.js.
+
+Step4: We move forward bt deploying the serverless archictecture:
+
 
 
 
